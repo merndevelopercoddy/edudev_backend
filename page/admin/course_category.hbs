@@ -1,0 +1,144 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1 class="text-center">Kurs kategoriya qo‘shish</h1>
+      <p>
+        <a
+          href="https://fontawesome.com/v5/search?q=home&o=r&m=free"
+          target="_blank"
+        >Ikonkalar nomi shu saytdan olinadi</a>
+      </p>
+      <form
+        class="row g-3 needs-validation shadow rounded-4 p-3 my-4"
+        novalidate=""
+        action="/admin/course_category/add"
+        method="POST"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Ikonka nomi</label>
+          <input
+            name="icon"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Kurs kategoriya
+            nomi</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="validationCustom02"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom03" class="form-label">Kurs kategoriya URL</label>
+          <input
+            name="url"
+            type="text"
+            class="form-control"
+            id="validationCustom03"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+                        <label for="validationCustom01" class="form-label">Tartib</label>
+                        <input
+                            name="tartib"
+                            type="number"
+                            class="form-control"
+                            id="validationCustom01"
+                            required="" 
+                        />
+                    </div>
+        <div class="form-check">
+    <input
+        name="asosiy_sahifa"
+        class="form-check-input"
+        type="checkbox"
+        value="true"
+        id="flexCheckDefault"
+        {{!-- {{#if course_category.asosiy_sahifa}}checked{{/if}} --}}
+    />
+    <label class="form-check-label" for="flexCheckDefault">
+        Asosiy sahifada ko'rsatish
+    </label>
+</div>
+        <input
+          class="btn btn-primary mt-4 mb-2"
+          type="submit"
+          value="Saqlash"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Kurslar kategoriyasi</h5>
+          <!-- Table with stripped rows -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <b>№</b>
+                </th>
+                <th>Ikonka nomi</th>
+                <th>Kurs kategoriya nomi</th>
+                <th>Kurs kategoriya URL</th>
+                <th>Ko'rinsinmi?</th>
+                <th>Tartib raqam</th>
+                <th>Tahrirlash</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each course_category}}
+                {{#if asosiy_sahifa}}
+                  <tr class="table-info">
+                  <td>{{inc @index}}</td>
+                  <td><i class="{{icon}} ikon"></i>{{icon}}</td>
+                  <td>{{name}}</td>
+                  <td>{{url}}</td>
+                  <td>{{asosiy_sahifa}}</td>
+                  <td>{{tartib}}</td>
+                  <td>
+                    <a
+                      class="btn btn-primary"
+                      href="/admin/course_category/{{id}}"
+                    >Tahrirlash</a>
+                  </td>
+                </tr>
+                {{else}}
+                  <tr class="table-danger">
+                  <td>{{inc @index}}</td>
+                  <td><i class="{{icon}} ikon"></i>{{icon}}</td>
+                  <td>{{name}}</td>
+                  <td>{{url}}</td>
+                  <td>{{asosiy_sahifa}}</td>
+                  <td>{{tartib}}</td>
+                  <td>
+                    <a
+                      class="btn btn-primary"
+                      href="/admin/course_category/{{id}}"
+                    >Tahrirlash</a>
+                  </td>
+                </tr>
+                {{/if}}
+              {{/each}}
+            </tbody>
+          </table>
+          <!-- End Table with stripped rows -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

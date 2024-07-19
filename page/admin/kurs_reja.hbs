@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Kurs reja qo'shish</h2>
+            <table class="table">
+                <thead>
+                    <th>№</th>
+                    <th>Rasm</th>
+                    <th>Kurs nomi</th>
+                    <th>Kurs reja qo'shish</th>
+                    <th>Kurs haqida</th>
+                </thead>
+                <tbody>
+                   {{#if kurslar.length}}
+                        {{#each kurslar}}   
+                            <tr>
+                                <td>{{inc @index}}</td>
+                                <td>
+                                    <img src="../../{{image}}" alt="" width="70">
+                                </td>
+                                <td>{{title}}</td>
+                                <td>
+                                    <a href="/admin/kurs_reja/{{id}}" class="btn btn-primary">Reja qo'shish</a>
+                                </td>
+                                <td>
+                                    <a href="/admin/kurs_haqida/{{id}}" class="btn btn-primary">Kurs haqida</a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                   {{else}}
+                        Kurslar qo'shilmagan
+                   {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

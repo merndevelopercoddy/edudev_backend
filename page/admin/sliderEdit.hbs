@@ -1,0 +1,58 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h1 class="text-center">Edit Slider</h1>
+        <form class="row g-3 needs-validation shadow rounded-4 p-3 my-4" novalidate="" action="/admin/slider/{{slider.id}}" method="POST" enctype="multipart/form-data">
+          <div class="col-md-12">
+            <label for="validationCustom01" class="form-label">Sarlavha1</label>
+            <input name="sarlavha1" type="text" class="form-control" id="validationCustom01" required="" value="{{slider.sarlavha1}}">
+          </div>
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label for="summernote" class="form-label">Sarlavha2</label>
+              <textarea name="sarlavha2" type="text" class="form-control" id="summernote" aria-describedby="emailHelp" required="">
+                  {{slider.sarlavha2}}
+            </textarea>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustom03" class="form-label">Sarlavha3</label>
+            <input name="sarlavha3" type="text" class="form-control" id="validationCustom03" required="" value="{{slider.sarlavha3}}">
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustom04" class="form-label">Rasm</label>
+            <input type="file" name="rasmSlider" class="form-control" id="validationCustom04">
+            <input type="hidden" name="existingImageUrl" value="{{slider.rasmslider}}">
+            <div class="valid-feedback">Yuklandi!</div>
+          </div>
+          <div class="col-md-12">
+            <img src="/{{slider.rasmslider}}" alt="Current Image" class="img-fluid" style="width: 100px;">
+          </div>
+          <input class="btn btn-primary mt-4 mb-2" type="submit" value="Saqlash">
+        </form>
+      </div>
+    </div>
+  </div>
+   <form action="/admin/slider/{{slider.id}}/delete" method="POST">
+            <input type="hidden" value="{{slider.id}}" name="id">
+            {{slider.id}}
+            <button type="submit" class="btn btn-danger">O'chirish</button>
+    </form>
+
+<link
+  href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+  rel="stylesheet"
+/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"
+></script>
+<script>
+  $(document).ready(function () { document.emojiSource = '../tam-emoji/img';
+  $("#summernote").summernote({ height: 200, toolbar: [ ['insert', ['emoji']],
+  ['tool', ['undo', 'redo', 'codeview']], ['style', ['style']], ['font',
+  ['bold', 'underline', 'clear']], ['fontname', ['fontname']], ['color',
+  ['color']], ['para', ['ul', 'ol', 'paragraph']], ['insert', ['link', 'unlink',
+  'picture', 'video', 'hr']], ['table', ['table']], ['insert', ['link']],
+  ['view', ['fullscreen', 'codeview', 'help']], ], }); });
+</script>

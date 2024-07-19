@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1 class="text-center">Muallif qo‘shish</h1>
+      <form
+        class="row g-3 needs-validation  shadow rounded-4 p-3 my-4"
+        novalidate=""
+        action="/admin/mualliflar/add"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Muallif rasmi</label>
+          <input
+            name="m_image"
+            type="file"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Muallif ismi</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="validationCustom02"
+            required=""
+          />
+        </div>
+        <input class="btn btn-primary mt-4 mb-2" type="submit" value="Saqlash" />
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Mualliflar</h5>
+              <!-- Table with stripped rows -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      <b>№</b>
+                    </th>
+                    <th>Muallif rasmi</th>
+                    <th>Muallif ismi</th>
+                    <th>Rating</th>
+                    <th>Kurslar soni</th>
+                    <th>Muallif talabalari soni</th>
+                    <th>Tahrirlash</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{#each muallif}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td><img src="/{{rasm}}" alt="" style="width: 50px;"></td>
+                        <td>{{name}}</td>
+                        <td>{{rating}}</td>
+                        <td>
+                          {{courses.length}}
+                        </td>
+                        <td>{{students}}</td>
+                        <td>
+                          <a class="btn btn-primary" href="/admin/mualliflar/{{id}}">Tahrirlash</a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

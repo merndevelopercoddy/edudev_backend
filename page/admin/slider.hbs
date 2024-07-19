@@ -1,0 +1,135 @@
+{{#if sliders.rows.length}}
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Slider</h5>
+          <!-- Table with stripped rows -->
+          <table class="table datatable">
+            <thead>
+              <tr>
+                <th>
+                  <b>№</b>
+                </th>
+                <th>Saravha1</th>
+                <th>Saravha2</th>
+                <th>Saravha3</th>
+                <th>Rasm</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each sliders.rows}}
+                <tr>
+                  <td>{{inc @index}}</td>
+                  <td>{{sarlavha1}}</td>
+                  <td>{{{sarlavha2}}}</td>
+                  <td>{{sarlavha3}}</td>
+                  <td>
+                    <img src="/{{rasmslider}}" alt="slider" style="width: 100px;">
+                  </td>
+                  <td>
+                    <a
+                      class="btn btn-primary"
+                      href="/admin/slider/{{id}}"
+                    >Tahrirlash</a>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <!-- End Table with stripped rows -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <h1 class="text-center">Slider qo‘shish</h1>
+      <form
+        class="row g-3 needs-validation shadow rounded-4 p-3 my-4"
+        novalidate=""
+        action="/admin/slider/add"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Sarlavha1</label>
+          <input
+            name="sarlavha1"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="summernote" class="form-label">Sarlavha2</label>
+            <textarea
+              name="sarlavha2"
+              type="text"
+              class="form-control"
+              id="summernote"
+              aria-describedby="emailHelp"
+              required=""
+            ></textarea>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom03" class="form-label">Sarlavha3</label>
+          <input
+            name="sarlavha3"
+            type="text"
+            class="form-control"
+            id="validationCustom03"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom04" class="form-label">Rasm</label>
+          <input
+            type="file"
+            name="rasmSlider"
+            class="form-control"
+            id="validationCustom04"
+            required
+          />
+          <div class="valid-feedback">
+            Yuklandi!
+          </div>
+        </div>
+        <input
+          class="btn btn-primary mt-4 mb-2"
+          type="submit"
+          value="Saqlash"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+
+
+<link
+  href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+  rel="stylesheet"
+/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"
+></script>
+<script>
+  $(document).ready(function () { document.emojiSource = '../tam-emoji/img';
+  $("#summernote").summernote({ height: 200, toolbar: [ ['insert', ['emoji']],
+  ['tool', ['undo', 'redo', 'codeview']], ['style', ['style']], ['font',
+  ['bold', 'underline', 'clear']], ['fontname', ['fontname']], ['color',
+  ['color']], ['para', ['ul', 'ol', 'paragraph']], ['insert', ['link', 'unlink',
+  'picture', 'video', 'hr']], ['table', ['table']], ['insert', ['link']],
+  ['view', ['fullscreen', 'codeview', 'help']], ], }); });
+</script>

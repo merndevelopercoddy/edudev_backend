@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1 class="text-center">Kategoriya qo‘shish</h1>
+      {{#if category}}
+      <form
+        class="row g-3 needs-validation  shadow rounded-4 p-3 my-4"
+        novalidate=""
+        action="/admin/category/edit"
+        method="POST"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Kategoriya nomi</label>
+          <input
+          value="{{category.category_name}}"
+            name="category_name"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+          />
+        </div>
+        <input type="hidden" name="id" value="{{category.category_uuid}}">
+        <input class="btn btn-primary mt-4 mb-2" type="submit" value="Saqlash" />
+      </form>
+      <form action="/admin/category/delete" method="POST">
+          <input type="hidden" name="id" value="{{category.category_uuid}}">
+          <button type="submit" class="btn btn-danger my-3 shadow-sm">
+            O'chirish
+          </button>
+</form>
+        {{else}}
+        Topilmadi
+        {{/if}}
+    </div>
+  </div>
+</div>

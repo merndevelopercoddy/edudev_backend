@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1 class="text-center">Menyu qo‘shish</h1>
+      <form
+        class="row g-3 needs-validation  shadow rounded-4 p-3 my-4"
+        novalidate=""
+        action="/admin/menu/add"
+        method="POST"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Menyu nomi</label>
+          <input
+            name="menu_name"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Menyu sahifasi</label>
+          <select
+            class="form-select"
+            id="validationCustom02"
+            required
+            name="menu_page"
+          >
+            <option disabled selected>Sahifani tanlang</option>
+            <option value="">bosh sahifa</option>
+            {{#each category}}
+                <option>{{category_name}}</option>
+            {{/each}}
+            {{!-- {{#if category.rows.length}}
+              {{#each category.rows}}
+                <option value="{{categoryname}}">
+                  {{categoryname}}
+                </option>
+              {{/each}}
+            {{else}}
+              Kategoriya qo'shilmagan
+            {{/if}} --}}
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom03" class="form-label">Menyu tartibi</label>
+          <input
+            name="menu_number"
+            type="number"
+            class="form-control"
+            id="validationCustom03"
+            required=""
+          />
+        </div>
+        <input class="btn btn-primary mt-4 mb-2" type="submit" value="Saqlash" />
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Menyu</h5>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>
+                      <b>№</b>
+                    </th>
+                    <th>Menyu nomi</th>
+                    <th>Menyu sahifasi</th>
+                    <th>Tartib raqam</th>
+                    <th>Menyu ID</th>
+                    <th>Tahrirlash</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{#each menuRows}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td>{{menu_name}}</td>
+                        <td>{{menu_page}}</td>
+                        <td>{{menu_number}}</td>
+                        <td>{{menu_uuid}}</td>
+                        <td>
+                          <a class="btn btn-primary" href="/admin/menu/{{menu_uuid}}">Tahrirlash</a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

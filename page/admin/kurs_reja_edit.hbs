@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto rounded shadow p-3">
+      <h2 class="text-center">Kurs Rejani Tahrirlash</h2>
+      <form
+        action="/admin/kurs_reja/{{reja.id}}/edit"
+        class="table"
+        method="POST"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Sarlavha</label>
+          <input
+            name="title"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+            value="{{reja.title}}"
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Joylashuv tartibi</label>
+          <input
+            name="position"
+            type="number"
+            class="form-control"
+            id="validationCustom02"
+            required=""
+            value="{{reja.position}}"
+          />
+        </div>
+        <input type="hidden" name="kurs_id" value="{{kurs_id}}" />
+        <input type="submit" value="Saqlash" class="btn btn-primary mt-3" />
+      </form>
+      <form action="/admin/kurs_reja/{{reja.id}}/delete" method="POST">
+        <input type="hidden" name="kurs_id" value="{{kurs_id}}" />
+        <input type="submit" value="O'chirish" class="btn btn-danger" />
+      </form>
+    </div>
+  </div>
+</div>

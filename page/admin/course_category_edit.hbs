@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1 class="text-center">Kurs kategoriya tahrirlash</h1>
+      <p>
+          <a href="https://fontawesome.com/v5/search?q=home&o=r&m=free" target="_blank">Ikonkalar nomi shu saytdan olinadi</a>
+      </p>
+      <form
+        class="row g-3 needs-validation  shadow rounded-4 p-3 my-4"
+        novalidate=""
+        action="/admin/course_category/edit"
+        method="POST"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Ikonka nomi</label>
+          <input
+            name="icon"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+            value="{{course_category.icon}}"
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Kurs kategoriya nomi</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+            value="{{course_category.name}}"
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Kurs kategoriya URL</label>
+          <input
+            name="url"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+            value="{{course_category.url}}"
+          />
+        </div>
+        <div class="col-md-12">
+                        <label for="validationCustom01" class="form-label">Tartib</label>
+                        <input
+                            name="tartib"
+                            type="number"
+                            class="form-control"
+                            id="validationCustom01"
+                            required=""
+                            value="{{course_category.tartib}}"
+                        />
+                    </div>
+        <div class="form-check">
+    <input
+        name="asosiy_sahifa"
+        class="form-check-input"
+        type="checkbox"
+        value="true"
+        id="flexCheckDefault"
+        {{#if course_category.asosiy_sahifa}}checked{{/if}}
+    />
+    <label class="form-check-label" for="flexCheckDefault">
+        Asosiy sahifada ko'rsatish
+    </label>
+</div>
+        <input type="hidden" name="id" value="{{course_category.id}}">
+      
+        <input class="btn btn-primary mt-4 mb-2" type="submit" value="Tahrirlash" />
+      </form>
+      <form action="/admin/course_category/delete" method="POST">
+        <input type="hidden" name="id" value="{{course_category.id}}">
+        <input class="btn btn-danger mt-4 mb-2" type="submit" value="O'chirish" />
+      </form>
+    </div>
+  </div>
+</div>

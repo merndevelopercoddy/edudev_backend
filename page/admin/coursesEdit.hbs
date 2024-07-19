@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1 class="text-center">Kurs qo‘shish</h1>
+      {{#if courses}}
+        <form
+          class="row g-3 needs-validation shadow rounded-4 p-3 my-4"
+          novalidate=""
+          action="/admin/courses/edit"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="col-md-12">
+            <label for="validationCustom01" class="form-label">Kurs rasmi</label>
+            <input
+              name="image"
+              type="file"
+              class="form-control"
+              id="validationCustom01"
+            />
+            <input
+              type="hidden"
+              name="existingImageUrl"
+              value="{{courses.image}}"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustom02" class="form-label">Level - daraja</label>
+            <input
+              name="level"
+              type="text"
+              class="form-control"
+              id="validationCustom02"
+              required=""
+              value="{{courses.level}}"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustom03" class="form-label">Kurs nomi</label>
+            <input
+              name="title"
+              type="text"
+              class="form-control"
+              id="validationCustom03"
+              required=""
+              value="{{courses.title}}"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustom04" class="form-label">Kurs izohi</label>
+            <input
+              name="description"
+              type="text"
+              class="form-control"
+              id="validationCustom04"
+              required=""
+              value="{{courses.description}}"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustom05" class="form-label">Kurs narxi</label>
+            <input
+              name="price"
+              type="number"
+              class="form-control"
+              id="validationCustom05"
+              required=""
+              value="{{courses.price}}"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustom06" class="form-label">O'quvchi soni</label>
+            <input
+              name="oquvchi_soni"
+              type="number"
+              class="form-control"
+              id="validationCustom06"
+              required=""
+              value="{{courses.oquvchi_soni}}"
+            />
+          </div>
+          <div class="col-md-12">
+            <select class="form-select" name="course_category_id" id="">
+              <option
+                selected
+                value="{{courses.course_category_id}}"
+              >{{courses.category_name}}</option>
+              {{#each course_category}}
+                <option value="{{id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="col-md-12">
+            <select class="form-select" name="muallif_id" id="">
+              <option
+                selected
+                value="{{courses.teacher_id}}"
+              >{{courses.teacher_name}}</option>
+              {{#each muallif}}
+                <option value="{{id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <input type="hidden" name="id" value="{{courses.course_id}}" />
+          <input
+            class="btn btn-primary mt-4 mb-2"
+            type="submit"
+            value="Saqlash"
+          />
+        </form>
+        <form action="/admin/courses/delete" method="POST">
+          <input type="hidden" name="id" value="{{courses.course_id}}">
+           <input
+              type="hidden"
+              name="existingImageUrl"
+              value="{{courses.image}}"
+            />
+          <input
+            class="btn btn-danger m-2"
+            type="submit"
+            value="O'chirish"
+          />
+        </form>
+      {{/if}}
+    </div>
+  </div>
+</div>

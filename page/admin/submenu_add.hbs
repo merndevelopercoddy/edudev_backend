@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto rounded shadow p-3">
+      <h2 class="text-center">Submenu qo'shish</h2>
+      <form action="/admin/submenu/{{id.id}}/add" class="table" method="POST">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Sarlavha</label>
+          <input
+            name="title"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Joylashuv tartibi</label>
+          <input
+            name="position"
+            type="number"
+            class="form-control"
+            id="validationCustom02"
+            required=""
+          />
+        </div>
+        <input type="hidden" name="kurs_id" value="{{kurs_id}}">
+        <input type="submit" value="Saqlash" class="btn btn-primary mt-3">
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                    <th>№</th>
+                    <th>Sarlavha</th>
+                    <th>Submenu qo'shish</th>
+                </thead>
+                <tbody>
+                    {{#if kurs_reja.length}}
+                        {{#each kurs_reja}}
+                        <tr>
+                            <td>{{inc @index}}</td>
+                            <td>{{title}}</td>
+                            <td>
+                                <a href="/admin/submenu/{{id}}" class="btn btn-success">Submenu qo'shish</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    {{else}}
+                    Kurs reja qo'shilmagan
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto rounded shadow p-3">
+      <h2 class="text-center">Reja qo'shish</h2>
+      <form action="/admin/kurs_reja/{{id}}/add" class="table" method="POST">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Sarlavha</label>
+          <input
+            name="title"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Joylashuv tartibi</label>
+          <input
+            name="position"
+            type="number"
+            class="form-control"
+            id="validationCustom02"
+            required=""
+          />
+        </div>
+        <input type="submit" value="Saqlash" class="btn btn-primary mt-3">
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                    <th>№</th>
+                    <th>Sarlavha</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Submenu qo'shish</th>
+                </thead>
+                <tbody>
+                    {{#if kurs_reja.length}}
+                        {{#each kurs_reja}}
+                        <tr>
+                            <td>{{inc @index}}</td>
+                            <td>
+                              
+                              <ul class="sidebar-nav" id="sidebar-nav" style="width: 400px">
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav{{id}}" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>{{title}}</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav{{id}}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          {{#each submenu}}
+              <li>
+                <a href="#">
+                  <i class="bi bi-circle"></i>
+                  <span>{{title}}</span>
+                </a>
+                <form action="/admin/submenu/delete" method="POST">
+                    <input type="hidden" name="kurs_id" value="{{../../id}}">
+                    <input type="hidden" name="submenu_id" value="{{id}}">
+                    <button class="btn btn-danger" type="submit">
+                      <i class="bx bx-basket" style="font-size: 15px;"></i>
+                    </button>
+                  </form>
+              </li>
+          {{/each}}
+        </ul>
+      </li>
+    </ul>
+                            </td>
+                            <td>
+                              <form action="/admin/kurs_reja/{{id}}/edit" method="GET">
+                                <input type="hidden" name="kurs_id" value="{{../id}}">
+                                <input type="submit" value="Tahrirlash" class="btn btn-primary">
+                              </form>
+                            </td>
+                            <td>
+                              <form action="/admin/kurs_reja/{{id}}/delete" method="POST">
+                                <input type="hidden" name="id" value="{{id}}">
+                                <input type="submit" value="O'chirish" class="btn btn-danger">
+                              </form>
+                            </td>
+                            <td>
+                                {{!-- <a href="/admin/submenu/{{id}}" class="btn btn-success">Submenu qo'shish</a> --}}
+                                <form action="/admin/submenu/{{id}}" method="GET">
+                                <input type="hidden" name="kurs_id" value="{{../id}}">
+                                <input type="submit" value="Submenu qo'shish" class="btn btn-success">
+                              </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    {{else}}
+                    Kurs reja qo'shilmagan
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

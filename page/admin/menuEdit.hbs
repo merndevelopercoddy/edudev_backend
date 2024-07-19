@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+            <h2 class="text-center">Menyuni tahrirlash</h2>
+        <div class="col-lg-6 mx-auto shadow rounded-4 p-3 my-4">
+{{#if menu.length}}
+{{#each menu}}
+   <form method="POST" action="/admin/menu/edit" class="row g-3 needs-validation" novalidate>
+  <div class="col-md-12">
+    <label for="validationCustom01" class="form-label">Menyu nomi </label>
+    <input value="{{menu_name}}" type="text" name="menu_name" class="form-control" id="validationCustom01"  required>
+    <div class="valid-feedback">
+      To'ldirildi
+    </div>
+  </div>
+  <div class="col-md-12">
+          <label for="validationCustom03" class="form-label">Menyu tartibi</label>
+          <input
+            name="menu_number"
+            type="number"
+            class="form-control"
+            id="validationCustom03"
+            required=""
+            value="{{menu_number}}"
+          />
+        </div>
+  <div class="col-md-12">
+    <label for="validationCustom04" class="form-label">Kategoriya</label>
+    <select class="form-select" id="validationCustom04" name="menu_page" required>
+      <option  selected="{{menu_page}}">{{menu_page}}</option>
+      {{!-- <option selected disabled>Kategoriyani tanlang</option> --}}
+{{/each}}
+{{/if}}
+      {{#if category.length}}
+        {{#each category}}
+          <option value="{{category_name}}">
+            {{category_name}}
+          </option>
+        {{/each}}
+      {{else}}
+        Kategoriya qo'shilmagan
+      {{/if}}
+    </select>
+    <div class="invalid-feedback">
+      Kategoriya tanlash zarur
+    </div>
+  </div>
+  {{#if menu.length}}
+{{#each menu}}
+  <input type="hidden" name="id" value="{{menu_uuid}}">
+  <div class="col-12">
+    <button class="btn btn-primary shadow-sm" type="submit">Saqlash</button>
+  </div>
+</form>
+<form action="/admin/menu/delete" method="POST">
+          <input type="hidden" name="id" value="{{menu_uuid}}">
+          <button type="submit" class="btn btn-danger my-3 shadow-sm">
+            O'chirish
+          </button>
+</form>
+{{/each}}
+{{/if}}
+
+        </div>
+    </div>
+</div>

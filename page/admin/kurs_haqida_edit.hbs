@@ -1,0 +1,74 @@
+{{#if kurs_haqida}}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mx-auto rounded shadow p-3">
+      <h2 class="text-center">1.Kurs haqida umumiy ma'lumotni Tahrirlash</h2>
+      <form action="/admin/kurs_haqida/{{kurs_haqida.course_id}}/edit" class="table" method="POST" enctype="multipart/form-data">
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Sarlavha</label>
+          <input
+            name="kurs_haqida_sarlavha"
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            required=""
+            value="{{kurs_haqida.kurs_haqida_sarlavha}}"
+          />
+        </div>
+        <div class="col-md-12">
+            <label for="summernote" class="form-label">Batafsil</label>
+            <textarea class="form-control" id="summernote" required="" name="kurs_haqida_batafsil">
+                {{{kurs_haqida.kurs_haqida_batafsil}}}
+            </textarea>
+        </div>
+        <input type="hidden" name="about_id" value="{{kurs_haqida.id}}">
+        <input type="submit" value="Tahrirlash" class="btn btn-primary mt-3">
+      </form>
+    </div>
+  </div>
+</div>
+
+{{else}}
+
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        document.emojiSource = '../tam-emoji/img';
+        $("#summernote").summernote({
+            height: 200,
+            toolbar: [
+                ['insert', ['emoji']],
+                ['tool', ['undo', 'redo', 'codeview']],
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'unlink', 'picture', 'video', 'hr']],
+                ['table', ['table']],
+                ['insert', ['link']],
+                ['view', ['fullscreen', 'codeview', 'help']],
+            ]
+        });
+    });
+</script>

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1 class="text-center">Muallif Tahrirlash</h1>
+      {{#if muallif}}
+      <form
+        class="row g-3 needs-validation  shadow rounded-4 p-3 my-4"
+        novalidate=""
+        method="POST"
+        enctype="multipart/form-data"
+        action="/admin/mualliflar/edit"
+      >
+        <div class="col-md-12">
+          <label for="validationCustom01" class="form-label">Muallif rasmi</label>
+          <input
+            name="m_image"
+            type="file"
+            class="form-control"
+            id="validationCustom01"
+          />
+        <input type="hidden" name="existingImageUrl" value="{{muallif.rasm}}">
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom02" class="form-label">Muallif ismi</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="validationCustom02"
+            required=""
+            value="{{muallif.name}}"
+          />
+        </div>
+        <input type="hidden" name="id" value="{{muallif.id}}">
+        <input class="btn btn-primary mt-4 mb-2" type="submit" value="Tahrirlash" />
+      </form>
+      <form action="/admin/mualliflar/delete" method="POST">
+        <input type="hidden" name="existingImageUrl" value="{{muallif.rasm}}">
+        <input type="hidden" name="id" value="{{muallif.id}}">
+        <input class="btn btn-danger mt-4 mb-2" type="submit" value="O'chirish" />
+      </form>
+      {{else}}
+            Bunday Muallif topilmadi <a href="/admin/mualliflar">Ortga qaytish</a>
+      {{/if}}
+    </div>
+  </div>
+</div>
